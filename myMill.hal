@@ -9,7 +9,10 @@ loadrt hostmot2
 loadrt hm2_eth board_ip="10.10.10.10" config=" num_encoders=6 num_pwmgens=0 num_stepgens=0 sserial_port_0=001xxx" 
 setp    [HMOT](CARD0).watchdog.timeout_ns 5000000
 loadrt pid names=pid.x,pid.y,pid.z,pid.s
-loadrt mux16 names=jogincr,foincr
+loadrt mux16 names=jogincr
+#,foincr
+loadrt estop_latch count=2
+
 
 addf [HMOT](CARD0).read          servo-thread
 addf motion-command-handler   servo-thread
@@ -19,10 +22,12 @@ addf pid.y.do-pid-calcs       servo-thread
 addf pid.z.do-pid-calcs       servo-thread
 addf pid.s.do-pid-calcs       servo-thread
 addf jogincr                  servo-thread
-addf foincr                   servo-thread
+#addf foincr                   servo-thread
 addf [HMOT](CARD0).write         servo-thread
 setp [HMOT](CARD0).dpll.01.timer-us -50
 #setp [HMOT](CARD0).stepgen.timer-number 1
+addf estop-latch.0            servo-thread
+addf estop-latch.1            servo-thread
 
 # external output signals
 
@@ -53,7 +58,7 @@ net spindle-at-speed     <=  [HMOT](CARD0).7i77.0.0.input-04
 
 # --- ESTOP-EXT ---
 #net estop-ext0     <=  [HMOT](CARD0).7i77.0.0.input-06
-net estop-ext1     <=  [HMOT](CARD0).7i73.0.2.input-06-not
+#net estop-ext1     <=  [HMOT](CARD0).7i73.0.2.input-06-not
 
 # --- JOINT-SELECT-A ---
 net joint-select-a     <=  [HMOT](CARD0).7i73.0.2.input-00-not
@@ -386,10 +391,35 @@ net machine-is-enabled        <=  motion.motion-enabled
 
 #  ---digital in / out signals---
 
+
+# --- ESTOP CHAIN STARTS ---
+net latch-reset iocontrol.0.user-request-enable 
+net latch-ok-in iocontrol.0.user-enable-out 
+
+net latch-ok-in => estop-latch.0.ok-in
+net latch0-out <= estop-latch.0.ok-out 
+net latch0-out => estop-latch.1.ok-in
+#net latch.1-out <= estop-latch.1.ok-out 
+
+
+net latch-reset => estop-latch.0.reset
+net latch-reset => estop-latch.1.reset
+net latch-out iocontrol.0.emc-enable-in <= estop-latch.1.ok-out
+net estop-out estop-latch.1.fault-out
+
+# --- EXTERNAL ESTOP SWITCH ---
+net external-estop <= [HMOT](CARD0).7i77.0.0.input-06-not
+net external-estop => estop-latch.0.fault-in
+
+net pendant-estop <= [HMOT](CARD0).7i73.0.2.input-06
+net pendant-estop => estop-latch.1.fault-in
+
+# --- ESTOP CHAIN ENDS ---
+
 #  ---estop signals---
 
-net estop-out     <=  iocontrol.0.user-enable-out
-net estop-ext1     =>  iocontrol.0.emc-enable-in
+#net estop-out     <=  iocontrol.0.user-enable-out
+#net estop-ext1     =>  iocontrol.0.emc-enable-in
 
 #  ---manual tool change signals---
 
