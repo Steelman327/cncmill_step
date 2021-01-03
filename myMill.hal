@@ -38,11 +38,19 @@ net coolant-mist  =>     [HMOT](CARD0).7i77.0.0.output-00
 # --- COOLANT-FLOOD ---
 net coolant-flood  =>     [HMOT](CARD0).7i77.0.0.output-01
 
+# --- SPINDLE-CW ---
+net spindle-cw  =>     [HMOT](CARD0).7i77.0.0.output-03
+
+# --- SPINDLE-CCW ---
+net spindle-ccw  =>     [HMOT](CARD0).7i77.0.0.output-04
+
 # --- MACHINE-IS-ENABLED ---
 net machine-is-enabled  =>     [HMOT](CARD0).7i73.0.2.output-00
 
 # external input signals
 
+# --- SPINDLE-Alarm ---
+net spindle-alarm <= [HMOT](CARD0).7i77.0.0.input-05
 
 # --- BOTH-HOME-X ---
 net both-home-x     <=  [HMOT](CARD0).7i77.0.0.input-00
@@ -54,7 +62,7 @@ net both-home-y     <=  [HMOT](CARD0).7i77.0.0.input-01
 net both-home-z     <=  [HMOT](CARD0).7i77.0.0.input-02
 
 # --- SPINDLE-AT-SPEED ---
-net spindle-at-speed     <=  [HMOT](CARD0).7i77.0.0.input-04
+#net spindle-at-speed     <=  [HMOT](CARD0).7i77.0.0.input-04
 
 # --- ESTOP-EXT ---
 #net estop-ext0     <=  [HMOT](CARD0).7i77.0.0.input-06
@@ -268,6 +276,7 @@ net spindle-enable      => [HMOT](CARD0).7i77.0.1.spinena
 
 # ---setup spindle control signals---
 
+net spindle-alarm              <= axis.s.amp-fault-in
 net spindle-vel-cmd-rps        <=  spindle.0.speed-out-rps
 net spindle-vel-cmd-rps-abs    <=  spindle.0.speed-out-rps-abs
 net spindle-vel-cmd-rpm        <=  spindle.0.speed-out
