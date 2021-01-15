@@ -276,7 +276,7 @@ net spindle-enable      => [HMOT](CARD0).7i77.0.1.spinena
 
 # ---setup spindle control signals---
 
-net spindle-alarm              <= axis.s.amp-fault-in
+net spindle-alarm              <= spindle.0.amp-fault-in
 net spindle-vel-cmd-rps        <=  spindle.0.speed-out-rps
 net spindle-vel-cmd-rps-abs    <=  spindle.0.speed-out-rps-abs
 net spindle-vel-cmd-rpm        <=  spindle.0.speed-out
