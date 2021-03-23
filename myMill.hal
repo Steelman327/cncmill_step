@@ -50,7 +50,7 @@ net machine-is-enabled  =>     [HMOT](CARD0).7i73.0.2.output-00
 # external input signals
 
 # --- SPINDLE-Alarm ---
-net spindle-alarm <= [HMOT](CARD0).7i77.0.0.input-05
+net spindle-alarm <= [HMOT](CARD0).7i77.0.0.input-05-not
 
 # --- BOTH-HOME-X ---
 net both-home-x     <=  [HMOT](CARD0).7i77.0.0.input-00
@@ -369,9 +369,9 @@ net selected-jog-incr    <=  jogincr.out-f
     setp jogincr.debounce-time      0.200000
     setp jogincr.use-graycode      False
     setp jogincr.suppress-no-input False
-    setp jogincr.in00          0.100000
+    setp jogincr.in00          0.001
     setp jogincr.in01          0.010000
-    setp jogincr.in02          0.001000
+    setp jogincr.in02          0.1000
     setp jogincr.in03          0.000000
     setp jogincr.in04          0.000000
     setp jogincr.in05          0.000000
