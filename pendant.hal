@@ -1,0 +1,54 @@
+loadrt mux16 names=jogincr
+
+addf jogincr                  servo-thread
+
+loadrt ilowpass
+addf ilowpass.0 servo-thread
+
+setp ilowpass.0.scale 1000
+setp ilowpass.0.gain 0.01
+
+# ---jogwheel signals to mesa encoder - shared MPG---
+
+
+net mpg-out ilowpass.0.in    <=  [HMOT](CARD0).7i73.0.2.enc0.count
+
+# connect selectable mpg jog increments 
+
+net jog-incr-a           =>  jogincr.sel0
+net jog-incr-b           =>  jogincr.sel1
+net jog-incr-c           =>  jogincr.sel2
+net selected-jog-incr    <=  jogincr.out-f
+    setp jogincr.debounce-time      0.200000
+    setp jogincr.use-graycode      False
+    setp jogincr.suppress-no-input False
+    setp jogincr.in00          0.000001
+    setp jogincr.in01          0.0000010
+    setp jogincr.in02          0.0000100
+    setp jogincr.in03          0.0001
+
+net joint-selected-count    <= ilowpass.0.out
+
+#  ---mpg signals---
+
+#       for axis x MPG
+setp    joint.0.jog-vel-mode 0
+net selected-jog-incr    =>  joint.0.jog-scale
+net joint-select-a       =>  joint.0.jog-enable
+net joint-selected-count =>  joint.0.jog-counts
+
+#       for axis y MPG
+setp    joint.1.jog-vel-mode 0
+net selected-jog-incr    =>  joint.1.jog-scale
+net joint-select-b       =>  joint.1.jog-enable
+net joint-selected-count =>  joint.1.jog-counts
+
+#       for axis z MPG
+setp    joint.2.jog-vel-mode 0
+net selected-jog-incr    =>  joint.2.jog-scale
+net joint-select-c       =>  joint.2.jog-enable
+net joint-selected-count =>  joint.2.jog-counts
+
+
+
+
