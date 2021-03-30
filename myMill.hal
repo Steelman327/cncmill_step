@@ -51,13 +51,13 @@ net machine-is-enabled  =>     [HMOT](CARD0).7i73.0.2.output-00
 net spindle-alarm <= [HMOT](CARD0).7i77.0.0.input-05-not
 
 # --- BOTH-HOME-X ---
-net both-home-x     <=  [HMOT](CARD0).7i77.0.0.input-00
+net both-home-x     <=  [HMOT](CARD0).7i77.0.0.input-00-not
 
 # --- BOTH-HOME-Y ---
 net both-home-y     <=  [HMOT](CARD0).7i77.0.0.input-01
 
 # --- BOTH-HOME-Z ---
-net both-home-z     <=  [HMOT](CARD0).7i77.0.0.input-02
+net both-home-z     <=  [HMOT](CARD0).7i77.0.0.input-02-not
 
 # --- SPINDLE-AT-SPEED ---
 #net spindle-at-speed     <=  [HMOT](CARD0).7i77.0.0.input-04
@@ -259,7 +259,7 @@ setp   pid.s.error-previous-target true
 
 net spindle-index-enable  <=> pid.s.index-enable
 net spindle-enable        =>  pid.s.enable
-net spindle-vel-cmd-rpm     => pid.s.command
+net spindle-vel-cmd-rpm-abs    => pid.s.command
 net spindle-vel-fb-rpm      => pid.s.feedback
 net spindle-output        <=  pid.s.output
 
