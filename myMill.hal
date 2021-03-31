@@ -54,7 +54,7 @@ net spindle-alarm <= [HMOT](CARD0).7i77.0.0.input-05-not
 net both-home-x     <=  [HMOT](CARD0).7i77.0.0.input-00-not
 
 # --- BOTH-HOME-Y ---
-net both-home-y     <=  [HMOT](CARD0).7i77.0.0.input-01
+net both-home-y     <=  [HMOT](CARD0).7i77.0.0.input-01-not
 
 # --- BOTH-HOME-Z ---
 net both-home-z     <=  [HMOT](CARD0).7i77.0.0.input-02-not
