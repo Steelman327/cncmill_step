@@ -1,0 +1,8 @@
+2021-04-02 20:07:39,729 - qtpyvcp.plugins.notifications - ERROR - Cannot probe with zero feed 
+ rate
+2021-04-02 20:09:06,446 - qtpyvcp.plugins.notifications - ERROR - Cannot home while shared home 
+ switch is closed j=0
+2021-04-02 20:09:52,752 - qtpyvcp.plugins.notifications - ERROR - Cannot home while shared home 
+ switch is closed j=0
+2021-04-02 20:09:52,855 - qtpyvcp.plugins.notifications - ERROR - Cannot home while shared home 
+ switch is closed j=1
