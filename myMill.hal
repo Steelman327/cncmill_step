@@ -59,6 +59,10 @@ net both-home-y     <=  [HMOT](CARD0).7i77.0.0.input-01-not
 # --- BOTH-HOME-Z ---
 net both-home-z     <=  [HMOT](CARD0).7i77.0.0.input-02-not
 
+# -- PROBE
+
+net probe-in     <= [HMOT](CARD0).7i77.0.0.input-08-not
+
 # --- SPINDLE-AT-SPEED ---
 #net spindle-at-speed     <=  [HMOT](CARD0).7i77.0.0.input-04
 
