@@ -130,11 +130,11 @@ setp   [HMOT](CARD0).stepgen.00.maxvel           [JOINT_0]STEPGEN_MAXVEL
 net x-pos-cmd    <= joint.0.motor-pos-cmd
 net x-vel-cmd    <= joint.0.vel-cmd
 net x-output     <= [HMOT](CARD0).stepgen.00.velocity-cmd
-#net x-pos-fb     <= [HMOT](CARD0).stepgen.00.position-fb
+net x-pos-fb     <= [HMOT](CARD0).stepgen.00.position-fb
 net x-pos-fb     => joint.0.motor-pos-fb
 net x-enable     <= joint.0.amp-enable-out
 net x-enable     => [HMOT](CARD0).stepgen.00.enable
-net x-enable   => [HMOT](CARD0).7i77.0.1.analogena
+#net x-enable   => [HMOT](CARD0).7i77.0.1.analogena
 
 
 # ---Encoder feedback signals/setup---
@@ -146,7 +146,7 @@ setp    [HMOT](CARD0).encoder.00.index-mask 0
 setp    [HMOT](CARD0).encoder.00.index-mask-invert 0
 setp    [HMOT](CARD0).encoder.00.scale  [JOINT_0]ENCODER_SCALE
 
-net x-pos-fb               <=  [HMOT](CARD0).encoder.00.position
+#net x-pos-fb               <=  [HMOT](CARD0).encoder.00.position
 net x-vel-fb               <=  [HMOT](CARD0).encoder.00.velocity
 net x-pos-fb               =>  joint.0.motor-pos-fb
 net x-index-enable    joint.0.index-enable  <=>  [HMOT](CARD0).encoder.00.index-enable
@@ -201,11 +201,10 @@ setp   [HMOT](CARD0).stepgen.01.maxvel           [JOINT_1]STEPGEN_MAXVEL
 net y-pos-cmd    <= joint.1.motor-pos-cmd
 net y-vel-cmd    <= joint.1.vel-cmd
 net y-output     <= [HMOT](CARD0).stepgen.01.velocity-cmd
-#net y-pos-fb     <= [HMOT](CARD0).stepgen.01.position-fb
+net y-pos-fb     <= [HMOT](CARD0).stepgen.01.position-fb
 net y-pos-fb     => joint.1.motor-pos-fb
 net y-enable     <= joint.1.amp-enable-out
 net y-enable     => [HMOT](CARD0).stepgen.01.enable
-#net y-enable   => [HMOT](CARD0).7i77.0.1.analogena
 
 # ---Encoder feedback signals/setup---
 
@@ -216,7 +215,7 @@ setp    [HMOT](CARD0).encoder.01.index-mask 0
 setp    [HMOT](CARD0).encoder.01.index-mask-invert 0
 setp    [HMOT](CARD0).encoder.01.scale  [JOINT_1]ENCODER_SCALE
 
-net y-pos-fb               <=  [HMOT](CARD0).encoder.01.position
+#net y-pos-fb               <=  [HMOT](CARD0).encoder.01.position
 net y-vel-fb               <=  [HMOT](CARD0).encoder.01.velocity
 net y-pos-fb               =>  joint.1.motor-pos-fb
 net y-index-enable    joint.1.index-enable  <=>  [HMOT](CARD0).encoder.01.index-enable
@@ -269,10 +268,10 @@ setp   [HMOT](CARD0).stepgen.02.maxvel           [JOINT_2]STEPGEN_MAXVEL
 
 # ---closedloop stepper signals---
 
-net zpos-cmd    <= joint.2.motor-pos-cmd
+net z-pos-cmd    <= joint.2.motor-pos-cmd
 net z-vel-cmd    <= joint.2.vel-cmd
 net z-output     <= [HMOT](CARD0).stepgen.02.velocity-cmd
-#net z-pos-fb     <= [HMOT](CARD0).stepgen.02.position-fb
+net z-pos-fb     <= [HMOT](CARD0).stepgen.02.position-fb
 net z-pos-fb     => joint.2.motor-pos-fb
 net z-enable     <= joint.2.amp-enable-out
 net z-enable     => [HMOT](CARD0).stepgen.02.enable
@@ -287,9 +286,9 @@ setp    [HMOT](CARD0).encoder.02.index-mask 0
 setp    [HMOT](CARD0).encoder.02.index-mask-invert 0
 setp    [HMOT](CARD0).encoder.02.scale  [JOINT_2]ENCODER_SCALE
 
-net z-pos-fb               <=  [HMOT](CARD0).encoder.02.position
+#net z-pos-fb               <=  [HMOT](CARD0).encoder.02.position
 net z-vel-fb               <=  [HMOT](CARD0).encoder.02.velocity
-net z-pos-fb               =>  joint.2.motor-pos-fb
+#net z-pos-fb               =>  joint.2.motor-pos-fb
 net z-index-enable    joint.2.index-enable  <=>  [HMOT](CARD0).encoder.02.index-enable
 net z-pos-rawcounts        <=  [HMOT](CARD0).encoder.02.rawcounts
 
