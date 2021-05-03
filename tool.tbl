@@ -1,8 +1,10 @@
 ;Tool  Pocket Z Offset     Diameter     Remark
-T1     P1     Z-6.550500   D+0.000000   ; 
-T2     P2     Z+2.865300   D+0.000000   ; 1/4 Face Mill
-T3     P3     Z+3.048000   D+0.000000   ; 2" Face Mill
+T1     P0     Z+3.409400   D+0.000000   ; 1/2" Finish End Mill
+T2     P0     Z+2.865300   D+0.000000   ; 1/4 End Mill
+T3     P0     Z+3.048000   D+0.000000   ; 2" Face Mill
 T4     P0     Z+3.436300   D+0.000000   ; 1/4" Spot Drill
-T5     P4     Z+3.268600   D+0.000000   ; 1/4" Chamfer Mill
+T5     P0     Z+3.268600   D+0.000000   ; 1/4" Chamfer Mill
 T6     P0     Z+4.050300   D+0.000000   ; 1/8" Drill
+T7     P0     Z+5.277300   D+0.000000   ; 6.7mm Drill
 T99    P0     Z+2.907900   D+0.125000   ; Probe
+T8     P0     Z+4.849200   D+0.000000   ; 5mm Drill
