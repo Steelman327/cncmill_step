@@ -37,7 +37,7 @@ net coolant-mist  =>     [HMOT](CARD0).7i77.0.0.output-00
 net coolant-flood  =>     [HMOT](CARD0).7i77.0.0.output-01
 
 # --- SPINDLE-CW ---
-net spindle-cw  =>     [HMOT](CARD0).7i77.0.0.output-03
+net spindle-cw  =>     [HMOT](CARD0).7i77.0.0.output-02
 
 # --- SPINDLE-CCW ---
 net spindle-ccw  =>     [HMOT](CARD0).7i77.0.0.output-05
@@ -49,6 +49,9 @@ net machine-is-enabled  =>     [HMOT](CARD0).7i73.0.2.output-00
 
 # --- SPINDLE-Alarm ---
 net spindle-alarm <= [HMOT](CARD0).7i77.0.0.input-05-not
+
+# --- Servo-Alarm ---
+net servo-alarm <= [HMOT](CARD0).7i77.0.0.input-24
 
 # --- BOTH-HOME-X ---
 net both-home-x     <=  [HMOT](CARD0).7i77.0.0.input-00-not
@@ -157,6 +160,7 @@ net x-pos-rawcounts        <=  [HMOT](CARD0).encoder.00.rawcounts
 net both-home-x     =>  joint.0.home-sw-in
 net both-home-x     =>  joint.0.neg-lim-sw-in
 net both-home-x     =>  joint.0.pos-lim-sw-in
+net servo-alarm              <= joint.0.amp-fault-in
 
 #*******************
 #  AXIS Y JOINT 1
