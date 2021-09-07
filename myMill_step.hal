@@ -31,7 +31,7 @@ addf estop-latch.1            servo-thread
 
 
 # --- COOLANT-MIST ---
-net coolant-mist  =>     [HMOT](CARD0).7i77.0.0.output-00
+net coolant-mist  =>     [HMOT](CARD0).7i77.0.0.output-07
 
 # --- COOLANT-FLOOD ---
 net coolant-flood  =>     [HMOT](CARD0).7i77.0.0.output-01
