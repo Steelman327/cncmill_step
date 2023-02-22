@@ -5,12 +5,14 @@ T3     P0     Z+3.031000   D+2.000000   ; 50mm Face Mill
 T4     P0     Z+3.426000   D+0.000000   ; 1/4" Spot Drill
 T5     P0     Z+3.268600   D+0.000000   ; 1/4" Chamfer Mill
 T6     P0     Z+4.050300   D+0.000000   ; 1/8" Drill
-T7     P0     Z+5.277300   D+0.000000   ; 6.7mm Drill
+T7     P0     Z+6.812100   D+0.000000   ; 6.7mm Drill
 T8     P0     Z+4.849200   D+0.000000   ; 5mm Drill
 T10    P0     Z+6.789900   D+0.000000   ; boring bar
-T12    P0     Z+3.387600   D+0.500000   ; 1/2" Rouching End Mill
-T60    P0     Z+6.634800   D+0.000000   ; temp Drill
-T61    P0     Z+8.669000   D+0.000000   ; Temp drill
+T11    P0     Z+3.076000   D+0.188000   ; 3/16" Endmill
+T12    P0     Z+3.387600   D+0.500000   ; 1/2" Roughing End Mill
+T60    P0     Z+8.819200   D+0.000000   ; temp Drill
+T61    P0     Z+6.812100   D+0.000000   ; Temp drill
 T62    P0     Z+6.991000   D+0.000000   ; Temp drill
 T63    P0     Z+6.725000   D+0.000000   ; Temp Drill
+T81    P0     Z+3.119700   D+0.000000   ; M8 Thread Mill
 T99    P0     Z+2.899800   D+0.125000   ; Probe
